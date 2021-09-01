@@ -3,7 +3,7 @@ FROM node:15
 ARG PORT=8000
 ENV PORT=$PORT
 
-WORKDIR /app
+WORKDIR app
 
 # /app/src/index.js
 COPY src src
