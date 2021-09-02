@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  my-app:
+    build:
+      context: .
+      target: ${MY_ENV}
+    image: my-node-app:${MY_ENV}
+    ports:
+      - "9000:${MY_PORT}"
+    volumes:
+      - ./src:/app/src
+    environment:
+      PORT: ${MY_PORT}
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+volumes:
+  db_data: {}
